@@ -22,20 +22,29 @@ use Illuminate\Support\Facades\Route;
 //front
 Route::get('/', [AllController::class, 'home']);
 
-//Back
-Route::get('/admin/dashboard', [AllController::class, 'admin'])->middleware(['auth'])->name('dashboard');
+Route::middleware('auth')->group(function () {
+    
+    Route::get('/admin/dashboard', [AllController::class, 'admin'])->name('dashboard');
     //gallerie 
-Route::get('/admin/gallerie', [ImageController::class, 'gallerie'])->middleware(['auth'])->name('gallerie.index');
-Route::get('/admin/{image}/download', [ImageController::class, 'download'])->middleware(['auth'])->name('gallerie.download');
-    //avatar
-Route::resource('/admin/avatar', AvatarController::class)->middleware(['auth', 'isAdmin']);
+    Route::get('/admin/gallerie', [ImageController::class, 'gallerie'])->name('gallerie.index');
+    Route::get('/admin/{image}/download', [ImageController::class, 'download'])->name('gallerie.download');
     //image
-Route::resource('/admin/image', ImageController::class)->middleware(['auth', 'isAdmin']);
+    Route::resource('/admin/image', ImageController::class);
+    //avatar
+    Route::resource('/admin/avatar', AvatarController::class)->middleware('isAdmin');
     //categorie
-Route::resource('/admin/categorie', CategorieController::class)->middleware(['auth', 'isAdmin']);
+    Route::resource('/admin/categorie', CategorieController::class)->middleware('isAdmin');
     //user
-Route::resource('/admin/user', UserController::class)->middleware(['auth', 'isAdmin']);
-Route::put('admin/user/{user}/edit', [UserController::class, 'updateMembre'])->middleware(['auth'])->name('membre.update');
+    Route::resource('/admin/user', UserController::class)->middleware('isAdmin');
+    Route::put('admin/user/{user}/edit', [UserController::class, 'updateMembre'])->name('membre.update');
+});
+
+
+//Back
+
+
+
+
 
 require __DIR__.'/auth.php';
 

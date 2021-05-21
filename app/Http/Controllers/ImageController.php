@@ -16,6 +16,7 @@ class ImageController extends Controller
      */
     public function index()
     {
+        $this->authorize("isAdmin");
         $images = Image::all();
         return view('admin.image.main', compact('images'));
     }
@@ -39,6 +40,7 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize("isAdmin");
         request()->validate([
             "nom" => ["required"],
             // "src" => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],    
@@ -105,6 +107,7 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
+        $this->authorize("isAdmin");
         // Storage::disk('public')->delete('img/' . $image->src);
         $image->delete();
         return redirect()->route('image.index')->with('warning', 'Image bien supprimé');

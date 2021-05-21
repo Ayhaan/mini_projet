@@ -25,6 +25,7 @@ class UserController extends Controller
 
     public function update(User $user, Request $request)
     {
+        $this->authorize('isAdmin');
         $request->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
@@ -45,6 +46,7 @@ class UserController extends Controller
     }
     public function updateMembre(User $user, Request $request)
     {
+        $this->authorize('isRealUser', $user);
         $request->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
