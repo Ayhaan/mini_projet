@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\AllController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\GellerieController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -22,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 //front
 Route::get('/', [AllController::class, 'home']);
 
+//back
 Route::middleware('auth')->group(function () {
-    
     Route::get('/admin/dashboard', [AllController::class, 'admin'])->name('dashboard');
     //gallerie 
     Route::get('/admin/gallerie', [ImageController::class, 'gallerie'])->name('gallerie.index');
@@ -37,10 +37,13 @@ Route::middleware('auth')->group(function () {
     //user
     Route::resource('/admin/user', UserController::class)->middleware('isAdmin');
     Route::put('admin/user/{user}/edit', [UserController::class, 'updateMembre'])->name('membre.update');
+    //Blog article
+    Route::get('/admin/blog', [ArticleController::class, 'blog'])->name('blog.index');
+    Route::resource('admin/article', ArticleController::class);
+
 });
 
 
-//Back
 
 
 

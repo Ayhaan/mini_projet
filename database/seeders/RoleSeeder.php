@@ -20,6 +20,10 @@ class RoleSeeder extends Seeder
                 'created_at'=>now()
             ],
             [
+                'nom' => 'webmaster',
+                'created_at'=>now()
+            ],
+            [
                 'nom' => 'membre',
                 'created_at'=>now()
             ]

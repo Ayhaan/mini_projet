@@ -9,9 +9,9 @@
                 @csrf
                 <button class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">Logout</button>
 
-            </form>        
+            </form>
         </div>
- 
+
     </div>
     <div class="mt-10 mb-4">
         <ul class="ml-4">
@@ -98,7 +98,7 @@
                 </a>
             </li>
             @endadmin
-            {{-- Gallerie --}}
+            @webmaster
             <li
                 class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
                 <span>
@@ -106,6 +106,35 @@
                         <path d="M12 13H7v5h5v2H5V10h2v1h5v2M8
                     4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
                     9v2h-4v-2h4m2-2h-8v6h8v-6z"></path>
+                    </svg>
+                </span>
+                <a href="{{ route('article.index') }}">
+                    <span class="ml-2">Article</span>
+                </a>
+            </li>
+            @endwebmaster
+
+            <li
+                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+                <span>
+                    <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24">
+                        <path d="M12 13H7v5h5v2H5V10h2v1h5v2M8
+                    4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
+                    9v2h-4v-2h4m2-2h-8v6h8v-6z"></path>
+                    </svg>
+                </span>
+                <a href="{{ route('blog.index') }}">
+                    <span class="ml-2">Blog</span>
+                </a>
+            </li>
+            {{-- Gallerie --}}
+            <li
+                class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-black   hover:bg-gray-300  hover:font-bold rounded rounded-lg">
+                <span>
+                    <svg class="fill-current h-5 w-5 " viewBox="0 0 24 24">
+                        <path d="M12 13H7v5h5v2H5V10h2v1h5v2M8
+                            4v2H4V4h4m2-2H2v6h8V2m10 9v2h-4v-2h4m2-2h-8v6h8V9m-2
+                            9v2h-4v-2h4m2-2h-8v6h8v-6z"></path>
                     </svg>
                 </span>
                 <a href="{{ route('gallerie.index') }}">
